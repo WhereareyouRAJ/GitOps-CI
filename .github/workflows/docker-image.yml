@@ -8,7 +8,8 @@ jobs:
     runs-on: Agent-1
 
     steps:
-      - uses: actions/checkout@v6
+      - name: Checkout code
+        uses: actions/checkout@v6
       - name: Install Node.js
         uses: actions/setup-node@v6
         with:
@@ -22,18 +23,16 @@ jobs:
         run: |
           cd api 
           find . -name "*.js" -exec node --check {} +
-
- gitleaks-scan:
+  gitleaks-scan:
     runs-on: Agent-1
-    steps:
-      needs: compile
-      steps: 
-        - name: Checkout code
-        - uses: actions/checkout@v6
+    needs: compile    
+    steps: 
+      - name: Checkout code
+        uses: actions/checkout@v6
 
-        - name: git-leaks scan 
-        - uses: gitleaks/gitleaks-action@v2
-          run: |
-            gitleaks detect --source ./client --exit-code 1
-            gitleaks detect --source ./api --exit-code 1
+      - name: git-leaks scan 
+        uses: gitleaks/gitleaks-action@v2
+        run: |
+          gitleaks detect --source ./client --exit-code 1
+          gitleaks detect --source ./api --exit-code 1
             
