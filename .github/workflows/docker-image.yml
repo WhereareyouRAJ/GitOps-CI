@@ -59,3 +59,25 @@ jobs:
           ignore-unfixed: true
           vuln-type: 'os,library'
           severity: 'CRITICAL,HIGH' 
+
+  sonarqube-scan:
+    runs-on: Agent-1
+    needs: trivy-fs-scan
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+
+      - name: SonarQube Scan
+        uses: SonarSource/sonarqube-scan-action@v7
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+        with: 
+          args: >
+            -Dsonar.projectName=myorg
+            -Dsonar.projectKey=myorg-key
+            
+        
+          
+            
+            
