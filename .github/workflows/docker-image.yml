@@ -13,14 +13,16 @@ jobs:
         uses: actions/setup-node@v6
         with:
           node-version: '23'
+
       - name: Frontend compilation check 
-      - run: |
+        run: |
           cd client
           find . -name "*.js" -exec node --check {} +
       - name: Backend compilation check 
-      - run: |
+        run: |
           cd api 
           find . -name "*.js" -exec node --check {} +
+
  gitleaks-scan:
     runs-on: Agent-1
     steps:
