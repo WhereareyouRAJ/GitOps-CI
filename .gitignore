@@ -1,0 +1,11 @@
+# Dependencies
+node_modules
+/coverage
+
+# Build/dist folders
+/dist
+/build
+/out
+/esnext
+/target
+
