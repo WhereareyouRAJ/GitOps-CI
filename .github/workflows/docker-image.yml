@@ -98,7 +98,7 @@ jobs:
 
   docker-backend: 
    runs-on: ubuntu-latest
-   needs: sonarqube-scan-frontend
+   needs: sonarqube-scan-backend
    steps:
       
      -  name: Login to Docker Hub
@@ -118,7 +118,7 @@ jobs:
         with:
           context: ./api
           push: true
-          tags: rajsingh8826/DS-backend:latest    
+          tags: rajsingh8826/ds-backend:latest    
 
 
   docker-frontend: 
@@ -143,7 +143,7 @@ jobs:
         with:
           context: ./client
           push: true
-          tags: rajsingh8826/DS-frontend:latest
+          tags: rajsingh8826/ds-frontend:latest
           
             
             
