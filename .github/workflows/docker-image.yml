@@ -116,7 +116,7 @@ jobs:
      -  name: Build and push
         uses: docker/build-push-action@v6
         with:
-          context: ./api
+          context: /api
           push: true
           tags: rajsingh8826/ds-backend:latest    
 
@@ -141,7 +141,7 @@ jobs:
      -  name: Build and push
         uses: docker/build-push-action@v6
         with:
-          context: ./client
+          context: /client
           push: true
           tags: rajsingh8826/ds-frontend:latest
           
